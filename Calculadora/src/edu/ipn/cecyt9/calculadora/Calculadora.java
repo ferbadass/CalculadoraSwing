@@ -1,4 +1,12 @@
+/*
+    Copyright 2017, Lab. de proyectos de tecnologías de la información.
+*/
 
+/**
+ * Esta clase incluye los componentes y las funciones de la calculadora.
+ * @author López Esquivel Andrés 5IM8
+ * @version 1.0, 14/08/2017
+ */
 package edu.ipn.cecyt9.calculadora;
 
 import java.awt.BorderLayout;
@@ -17,14 +25,6 @@ import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 import javax.swing.border.EmptyBorder;
 
-/**
- * 
- * Interfaz para nuestra calculadora basica
- * 
- * @author:  emmanuel 
- * @version:  1.0 
- * @date: 06-09-2015 
- */
 public class Calculadora extends JFrame {
 
 	/**
@@ -53,7 +53,7 @@ public class Calculadora extends JFrame {
 	 */
 	public Calculadora() {
 		super();
-		setSize(250, 300);
+		setSize(300, 300);
 		setTitle("Calculadora Simple");
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		setResizable(false);
@@ -91,6 +91,11 @@ public class Calculadora extends JFrame {
 		nuevoBotonOperacion("*");
 		nuevoBotonOperacion("/");
 		nuevoBotonOperacion("=");
+                nuevoBotonOperacion("^2");
+                nuevoBotonOperacion("√");
+                nuevoBotonOperacion("sin");
+                nuevoBotonOperacion("cos");
+                nuevoBotonOperacion("tan");
 		nuevoBotonOperacion("CE");
 
 		panel.add("East", panelOperaciones);
@@ -192,7 +197,17 @@ public class Calculadora extends JFrame {
 			resultado /= new Double(pantalla.getText());
 		} else if (operacion.equals("*")) {
 			resultado *= new Double(pantalla.getText());
-		}
+		} else if (operacion.equals("^2")){
+                        resultado = Math.pow(Double.parseDouble(pantalla.getText()), 2);
+                } else if(operacion.equals("√")){
+                        resultado = Math.sqrt(Double.parseDouble(pantalla.getText()));
+                } else if(operacion.equals("sin")){
+                        resultado = Math.sin(Double.parseDouble(pantalla.getText()));
+                } else if(operacion.equals("cos")){
+                        resultado = Math.cos(Double.parseDouble(pantalla.getText()));
+                } else if(operacion.equals("tan")){
+                        resultado = Math.tan(Double.parseDouble(pantalla.getText()));
+                }
 
 		pantalla.setText("" + resultado);
 		operacion = "";
